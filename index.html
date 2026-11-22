@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Me amas? ❤️</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .contenedor {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px #0003;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        h1 {
+            color: #ff4081;
+        }
+
+        button {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 15px;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+
+        #si {
+            background: #ff4081;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        #no {
+            background: #555;
+            color: white;
+        }
+
+        #resultado {
+            display: none;
+            color: #ff4081;
+        }
+
+        .corazon {
+            font-size: 100px;
+            animation: latir 0.8s infinite alternate;
+        }
+
+        @keyframes latir {
+            from { transform: scale(1); }
+            to { transform: scale(1.3); }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="contenedor" id="pregunta">
+        <h1>¿Me amas? 🥺❤️</h1>
+
+        <button id="si" onclick="aceptar()">
+            Sí we ❤️
+        </button>
+
+        <button id="no" onclick="rechazar()">
+            No we 💔
+        </button>
+    </div>
+
+    <div class="contenedor" id="resultado">
+        <div class="corazon">❤️</div>
+        <h1>¡YO MÁS WE! 🥰</h1>
+        <p>Sabía que me amabas JAJAJA ❤️</p>
+    </div>
+
+    <script>
+        let tamaño = 1;
+
+        function aceptar() {
+            document.getElementById("pregunta").style.display = "none";
+            document.getElementById("resultado").style.display = "block";
+        }
+
+        function rechazar() {
+            tamaño += 0.5;
+
+            let botonSi = document.getElementById("si");
+
+            botonSi.style.transform = `scale(${tamaño})`;
+
+            if (tamaño >= 4) {
+                botonSi.style.position = "fixed";
+                botonSi.style.inset = "0";
+                botonSi.style.width = "100vw";
+                botonSi.style.height = "100vh";
+                botonSi.style.margin = "0";
+                botonSi.style.borderRadius = "0";
+                botonSi.style.fontSize = "50px";
+                
+                document.getElementById("no").style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
